@@ -9,7 +9,11 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", process.env.FRONTEND_URL],
+    origin: [
+      "http://localhost:3000",
+      process.env.FRONTEND_URL,
+      "https://a5--celebrated-pasca-32173b.netlify.app",
+    ],
   })
 );
 
