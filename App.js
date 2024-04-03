@@ -23,6 +23,16 @@ app.use((req, res, next) => {
   next();
 });
 
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  res.sendStatus(200); // Send an OK status for the preflight
+});
+
 Hello(app);
 app.use(express.json());
 CourseRoutes(app);
