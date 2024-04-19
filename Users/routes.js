@@ -2,6 +2,16 @@ import * as dao from "./dao.js";
 export default function UserRoutes(app) {
   // const recentUser = null;
 
+  const s = (d, f) => {
+    d.session["j"] = d.params["k"];
+    f.send(d.params["k"]);
+  };
+  const g = (h, u) => {
+    u.send(h.session["j"]);
+  };
+  app.get("/a/:k", s);
+  app.get("/o/:y", g);
+
   const createUser = async (req, res) => {
     const user = await dao.createUser(req.body);
     res.json(user);
